@@ -1,0 +1,5 @@
+{
+  "name": "MyApp",
+  "description": "Installer manifest - references download locations",
+  "notes": "This file documents that setup will download dependencies from trusted repo"
+}

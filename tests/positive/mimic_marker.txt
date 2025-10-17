@@ -1,0 +1,3 @@
+mimikatz
+sekurlsa::logonpasswords
+privilege::debug

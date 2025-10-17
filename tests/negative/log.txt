@@ -1,0 +1,3 @@
+2025-10-12 12:00:00 INFO Service started
+2025-10-12 12:05:10 INFO Download completed from internal repo: repo.local/artifacts/pkg.zip
+2025-10-12 12:06:00 INFO Task finished

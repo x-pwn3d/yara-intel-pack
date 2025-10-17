@@ -1,0 +1,6 @@
+<!-- This file is used to test that rules do not trigger on benign manifests -->
+
+<assembly>
+  <assemblyIdentity name="ExampleApp" version="1.0.0.0" />
+  <dependency name="DbgHelp" />
+</assembly>
