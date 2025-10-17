@@ -47,6 +47,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: compiled_rules.yar
-          path: |
-            compiled_rules.yar
-            ../compiled_rules.yar
+          path: tools/compiled_rules.yar
