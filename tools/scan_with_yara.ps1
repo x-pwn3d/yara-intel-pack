@@ -1,8 +1,8 @@
 # scan_with_yara.ps1
 # Scan a file or directory with YARA rules
 # Usage examples:
-#  .\scan_with_yara.ps1 -Path "C:\yara_intel\tests\positive\evil_demo.ps1" -RulePath "..\compiled_rules.yar"
-#  .\scan_with_yara.ps1 -Path "C:\LabShare" -RulePath "..\compiled_rules.yar" -YaraExe "C:\tools\yara\yara64.exe"
+#  .\scan_with_yara.ps1 -Path "C:\yara_intel\tests\positive\evil_demo.ps1" -RulePath ".\compiled_rules.yar"
+#  .\scan_with_yara.ps1 -Path "C:\LabShare" -RulePath ".\compiled_rules.yar" -YaraExe "C:\tools\yara\yara64.exe"
 #
 # Note: Edit $DefaultYaraExe below if you want a hard-coded default.
 

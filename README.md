@@ -95,6 +95,38 @@ This gives you a repeatable QA pipeline to tune rules and sample corpus before d
 - ``yara64.exe`` (YARA binary) accessible
 -  Edit ``tools/run_tests.ps1`` and ``tools/scan_with_yara.ps1`` if your binary lives elsewhere.
 
+## ⚠️ Windows script execution notes
+
+If you download this repository from GitHub, PowerShell may prevent scripts from running with an error like:
+
+```
+cannot be loaded. The file ...\run_tests.ps1 is not digitally signed.
+```
+This is normal on Windows for scripts downloaded from the Internet. There are two safe ways to fix this:
+
+### Option 1 – Unblock individual scripts
+
+Run the following in PowerShell in the tools folder:
+
+```powershell
+Unblock-File .\run_tests.ps1
+Unblock-File .\scan_with_yara.ps1
+```
+This removes the "downloaded from Internet" flag, allowing normal execution.
+
+### Option 2 – Bypass execution policy temporarily
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force
+.\run_tests.ps1
+```
+
+- This only applies for the current PowerShell session.
+- It does not modify system-wide settings.
+- Recommended if you plan to run multiple scripts during testing.
+
+> **Note**: This behavior cannot be fully bypassed in the scripts themselves, as it is enforced by Windows PowerShell’s security policies. The scripts do not need to be signed; these steps only allow them to run.
+
 ## ▶️ How to run tests (local)
 
 Open PowerShell in ``tools`` folder:

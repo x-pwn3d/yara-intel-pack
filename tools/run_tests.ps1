@@ -17,8 +17,26 @@ function Fail($msg) {
 }
 
 # Validate prerequisites
-if (-not (Test-Path $YaraExe)) { Fail "YARA binary not found at: $YaraExe" }
-if (-not (Test-Path $RulesDir)) { Fail "Rules directory not found: $RulesDir" }
+if ([string]::IsNullOrWhiteSpace($YaraExe)) {
+    Write-Host "`n[!] Error: the path to the YARA executable is not defined." -ForegroundColor Red
+    Write-Host "Please edit the script and set the `$YaraExe variable at the top of the file."
+    Write-Host "Example: `"C:\Tools\yara64.exe`""
+    Write-Host "`nScript terminated." -ForegroundColor Yellow
+    exit 1
+}
+
+if (-not (Test-Path $YaraExe)) {
+    Write-Host "`n[!] Error: could not find the specified YARA binary:" -ForegroundColor Red
+    Write-Host "     $YaraExe"
+    Write-Host "Please check that the path is correct and that the file exists."
+    Write-Host "`nScript terminated." -ForegroundColor Yellow
+    exit 1
+}
+
+if (-not (Test-Path $RulesDir)) {
+    Write-Host "`n[!] Error: rules directory not found: $RulesDir" -ForegroundColor Red
+    exit 1
+}
 
 # Get rules
 $rules = Get-ChildItem -Path $RulesDir -Recurse -Filter *.yar | Sort-Object Name
