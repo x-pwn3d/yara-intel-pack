@@ -24,21 +24,23 @@ jobs:
         shell: pwsh
         run: |
           choco install yara -y
-        # choco is present on windows-latest, installation will place yara64.exe in Program Files\Yara
+        
 
       - name: Run YARA test harness
         shell: pwsh
         working-directory: tools
         run: |
-          # Adjust path to yara if needed (choco default path)
-          $yaraPath = "C:\Program Files\Yara\yara64.exe"
-          if (-not (Test-Path $yaraPath)) {
-            # try the common alternative location
-            $yaraPath = "C:\Program Files (x86)\Yara\yara64.exe"
-          }
-          if (-not (Test-Path $yaraPath)) {
-            Write-Error "yara binary not found at expected paths: $yaraPath"
+          $possiblePaths = @(
+            "C:\ProgramData\chocolatey\bin\yara64.exe",
+            "C:\Program Files\Yara\yara64.exe",
+            "C:\Program Files (x86)\Yara\yara64.exe"
+          )
+          $yaraPath = $possiblePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
+          if (-not $yaraPath) {
+            Write-Error "YARA binary not found in expected paths: $($possiblePaths -join ', ')"
             exit 2
+          } else {
+            Write-Host "Using YARA binary at: $yaraPath"
           }
           .\run_tests.ps1 -YaraExe $yaraPath
       - name: Upload compiled rules artifact
