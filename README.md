@@ -74,7 +74,7 @@ Textual markers for common dumpers (``mimikatz``, ``procdump``, ``winpmem``, ``s
 
 ``tools/run_tests.ps1``:
 
-**1**. Concatenates/compiles rules into ``..\compiled_rules.yar``.  
+**1**. Concatenates/compiles rules into ``.\compiled_rules.yar``.  
 
 **2**. Runs YARA on every file in ``tests/positive`` (should match ≥1 rule) and ``tests/negative`` (should not match).
 
@@ -99,7 +99,7 @@ Open PowerShell in ``tools`` folder:
 # optional: override paths
 .\run_tests.ps1 -RulesDir "..\rules" -PosDir "..\tests\positive" -NegDir "..\tests\negative" -YaraExe "C:\path\to\yara64.exe"
 ```
-**Expected outcome**: compiled rules file ``..\compiled_rules.yar`` and console summary showing positives detected and negatives clean. Exit code ``0`` if no FP/FN, non-zero otherwise.
+**Expected outcome**: compiled rules file ``.\compiled_rules.yar`` and console summary showing positives detected and negatives clean. Exit code ``0`` if no FP/FN, non-zero otherwise.
 
 ## ▶️ How to scan a single file (helper)
 
@@ -109,13 +109,13 @@ It automatically detects if the target path is a file or folder and runs YARA wi
 
 ```powershell
 # Scan a single file
-.\scan_with_yara.ps1 -Path "C:\yara_intel\tests\positive\evil_demo.ps1" -RulePath "..\compiled_rules.yar"
+.\scan_with_yara.ps1 -Path "C:\yara_intel\tests\positive\evil_demo.ps1" -RulePath ".\compiled_rules.yar"
 
 # Scan an entire directory recursively
-.\scan_with_yara.ps1 -Path "C:\yara_intel\tests\positive" -RulePath "..\compiled_rules.yar"
+.\scan_with_yara.ps1 -Path "C:\yara_intel\tests\positive" -RulePath ".\compiled_rules.yar"
 
 # Optionally specify a custom YARA binary
-.\scan_with_yara.ps1 -Path "C:\Samples" -RulePath "..\compiled_rules.yar" -YaraExe "C:\tools\yara\yara64.exe"
+.\scan_with_yara.ps1 -Path "C:\Samples" -RulePath ".\compiled_rules.yar" -YaraExe "C:\tools\yara\yara64.exe"
 
 ```
 ## 📌 Notes, tuning & practical tips
