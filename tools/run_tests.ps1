@@ -8,7 +8,7 @@ param(
     [string]$PosDir   = "..\tests\positive",
     [string]$NegDir   = "..\tests\negative",
     [string]$OutFile  = "..\compiled_rules.yar",
-    [string]$YaraExe  = # Edit this path to your YARA executable
+    [string]$YaraExe  = $null # Edit this path to your YARA executable
 )
 
 function Fail($msg) {
