@@ -7,7 +7,7 @@ param(
     [string]$RulesDir = "..\rules",
     [string]$PosDir   = "..\tests\positive",
     [string]$NegDir   = "..\tests\negative",
-    [string]$OutFile  = "..\compiled_rules.yar",
+    [string]$OutFile  = ".\compiled_rules.yar",
     [string]$YaraExe  = $null # Edit this path to your YARA executable
 )
 
