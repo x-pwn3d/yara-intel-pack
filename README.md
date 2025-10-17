@@ -1,5 +1,11 @@
-![YARA tests](https://github.com/x-pwn3d/yara_intel/actions/workflows/test.yml/badge.svg)
 # YARA Intel Pack
+[![YARA tests](https://github.com/x-pwn3d/yara-intel-pack/actions/workflows/test.yml/badge.svg)](https://github.com/x-pwn3d/yara-intel-pack/actions/workflows/test.yml)
+![YARA](https://img.shields.io/badge/YARA-Intel-blue)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![Status](https://img.shields.io/badge/Status-Functional-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-orange)
+
+
 > 🧠 Test-driven YARA rulepack for detecting suspicious PowerShell, SMB uploads, and LSASS/memory-dump tooling.
 
 
@@ -151,8 +157,5 @@ The pack can feed Wazuh Active Response by having the wrapper call YARA and then
 However, keeping YARA as an offline intel pack is a valid, valuable use case by itself.
 
 
-![YARA](https://img.shields.io/badge/YARA-Intel-blue)
-![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
-![Status](https://img.shields.io/badge/Status-Functional-brightgreen)
-![License](https://img.shields.io/badge/License-MIT-orange)
+
 
