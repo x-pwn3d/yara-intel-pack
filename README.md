@@ -100,7 +100,7 @@ This gives you a repeatable QA pipeline to tune rules and sample corpus before d
 Open PowerShell in ``tools`` folder:
 
 ```powershell
-# default usage (assumes repo layout unchanged)
+# default usage (assuming we have set the path to the YARA executable)
 .\run_tests.ps1
 
 # optional: override paths
