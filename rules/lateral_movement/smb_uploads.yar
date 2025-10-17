@@ -3,6 +3,7 @@ rule Suspicious_Share_Transfer_PowerShell
     meta:
         description = "PowerShell script on SMB share with suspicious content (PS1 + IEX/Encoded/Download)"
         author = "xpwn3d"
+        mitre = "T1021.002"
 
     strings:
         $ps_ext      = /\.ps1\b/i

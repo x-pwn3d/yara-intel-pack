@@ -7,8 +7,8 @@ param(
     [string]$RulesDir = "..\rules",
     [string]$PosDir   = "..\tests\positive",
     [string]$NegDir   = "..\tests\negative",
-    [string]$YaraExe  = "C:\Program Files (x86)\ossec-agent\active-response\bin\yara\yara64.exe",
-    [string]$OutFile  = "..\compiled_rules.yar"
+    [string]$OutFile  = "..\compiled_rules.yar",
+    [string]$YaraExe  = # Edit this path to your YARA executable
 )
 
 function Fail($msg) {

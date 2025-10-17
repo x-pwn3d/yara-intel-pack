@@ -1,0 +1,50 @@
+name: YARA tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  windows-test:
+    runs-on: windows-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Ensure PowerShell execution policy
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force
+
+      - name: Install YARA (Chocolatey)
+        shell: pwsh
+        run: |
+          choco install yara -y
+        # choco is present on windows-latest, installation will place yara64.exe in Program Files\Yara
+
+      - name: Run YARA test harness
+        shell: pwsh
+        working-directory: tools
+        run: |
+          # Adjust path to yara if needed (choco default path)
+          $yaraPath = "C:\Program Files\Yara\yara64.exe"
+          if (-not (Test-Path $yaraPath)) {
+            # try the common alternative location
+            $yaraPath = "C:\Program Files (x86)\Yara\yara64.exe"
+          }
+          if (-not (Test-Path $yaraPath)) {
+            Write-Error "yara binary not found at expected paths: $yaraPath"
+            exit 2
+          }
+          .\run_tests.ps1 -YaraExe $yaraPath
+      - name: Upload compiled rules artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled_rules.yar
+          path: |
+            compiled_rules.yar
+            ../compiled_rules.yar
