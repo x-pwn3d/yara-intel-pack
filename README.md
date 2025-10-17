@@ -1,3 +1,4 @@
+![YARA tests](https://github.com/x-pwn3d/yara_intel/actions/workflows/test.yml/badge.svg)
 # YARA Intel Pack
 > 🧠 Test-driven YARA rulepack for detecting suspicious PowerShell, SMB uploads, and LSASS/memory-dump tooling.
 
@@ -101,6 +102,10 @@ Open PowerShell in ``tools`` folder:
 ```
 **Expected outcome**: compiled rules file ``.\compiled_rules.yar`` and console summary showing positives detected and negatives clean. Exit code ``0`` if no FP/FN, non-zero otherwise.
 
+Here’s an example of a successful test harness execution showing all rules passing without false positives/negatives :
+
+<img width="1023" height="727" alt="Capture d'écran 2025-10-17 172135" src="https://github.com/user-attachments/assets/5d037cad-f035-4ce0-ac3e-39911b2728a6" />
+
 ## ▶️ How to scan a single file (helper)
 
 
@@ -118,6 +123,13 @@ It automatically detects if the target path is a file or folder and runs YARA wi
 .\scan_with_yara.ps1 -Path "C:\Samples" -RulePath ".\compiled_rules.yar" -YaraExe "C:\tools\yara\yara64.exe"
 
 ```
+
+Example run of the on-demand scanner script (`scan_with_yara.ps1`), scanning a single file with the compiled rules:
+
+<img width="1024" height="727" alt="Capture d'écran 2025-10-17 173147" src="https://github.com/user-attachments/assets/ca33aa17-7bf0-4a73-9717-e90f9155aff6" />
+
+
+
 ## 📌 Notes, tuning & practical tips
 
 - **Performance**: some regexes (large base64 blobs, complex wildcards) can slow scanning. YARA warnings will tell you which strings may be expensive. Prefer bounded repeats (``.{1,200}``) and anchored patterns when possible.
