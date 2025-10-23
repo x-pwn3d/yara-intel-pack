@@ -142,7 +142,7 @@ Open PowerShell in ``tools`` folder:
 
 Here’s an example of a successful test harness execution showing all rules passing without false positives/negatives :
 
-<img width="1023" height="727" alt="Capture d'écran 2025-10-17 172135" src="https://github.com/user-attachments/assets/5d037cad-f035-4ce0-ac3e-39911b2728a6" />
+<img width="1023" height="727" alt="c1" src="https://github.com/user-attachments/assets/5d037cad-f035-4ce0-ac3e-39911b2728a6" />
 
 ## ▶️ How to scan a single file (helper)
 
@@ -164,7 +164,7 @@ It automatically detects if the target path is a file or folder and runs YARA wi
 
 Example run of the on-demand scanner script (`scan_with_yara.ps1`), scanning a single file with the compiled rules:
 
-<img width="1024" height="727" alt="Capture d'écran 2025-10-17 173147" src="https://github.com/user-attachments/assets/ca33aa17-7bf0-4a73-9717-e90f9155aff6" />
+<img width="1024" height="727" alt="c2" src="https://github.com/user-attachments/assets/ca33aa17-7bf0-4a73-9717-e90f9155aff6" />
 
 
 
